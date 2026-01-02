@@ -27,6 +27,8 @@
             --m3-on-error-container: #410002;
             --m3-card-shadow: rgba(0, 0, 0, 0.08);
             --m3-icon-overlay: rgba(255, 255, 255, 0.5);
+            --header-badge-bg: #e0e7ff;
+            --header-badge-text: #3730a3;
         }
 
         /* Dark Mode Colors */
@@ -43,6 +45,8 @@
             --m3-on-error-container: #ffdad6;
             --m3-card-shadow: rgba(0, 0, 0, 0.4);
             --m3-icon-overlay: rgba(0, 0, 0, 0.2);
+            --header-badge-bg: #1e293b;
+            --header-badge-text: #94a3b8;
         }
 
         body {
@@ -140,6 +144,19 @@
         body.dark-mode .arrow-btn {
             background-color: rgba(255, 255, 255, 0.1);
         }
+
+        .logo-img {
+            width: 80px;
+            height: auto;
+            object-fit: contain;
+            filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1));
+        }
+
+        @media (min-width: 768px) {
+            .logo-img {
+                width: 120px;
+            }
+        }
     </style>
 </head>
 <body class="p-6 md:p-12 lg:p-20">
@@ -151,17 +168,28 @@
 
     <main class="max-w-7xl mx-auto">
         <!-- Header Section -->
-        <header class="mb-16 flex flex-col md:flex-row items-center md:items-start justify-between gap-8">
-            <div class="text-center md:text-left">
-                <span class="inline-block px-4 py-1.5 rounded-full bg-blue-100 dark:bg-blue-900/30 text-grey-200 dark:text-grey-200 text-sm font-bold mb-6">
-                    IGD RS Dian Husada
-                </span>
-                <h1 class="text-5xl md:text-7xl font-bold tracking-tight mb-6">
-                    Portal <span class="text-blue-600 dark:text-blue-400">Medis</span>
-                </h1>
-                <p class="text-xl opacity-75 max-w-2xl font-medium leading-relaxed">
-                    Akses cepat database IGD.
-                </p>
+        <header class="mb-16">
+            <div class="flex flex-col md:flex-row items-center gap-8 md:gap-12">
+                <!-- Logo Container -->
+                <div class="flex-shrink-0 bg-white dark:bg-slate-800 p-5 rounded-[40px] shadow-sm border border-slate-100 dark:border-slate-700">
+                    <img src="https://raw.githubusercontent.com/igdrsdh/igdrsdh.github.io/main/LOGO%20IGD.png" 
+                         alt="Logo IGD RS Dian Husada" 
+                         class="logo-img"
+                         onerror="this.src='https://via.placeholder.com/120?text=IGD+DH'">
+                </div>
+
+                <!-- Text Content -->
+                <div class="text-center md:text-left">
+                    <span class="inline-block px-4 py-1.5 rounded-full bg-[var(--header-badge-bg)] text-[var(--header-badge-text)] text-sm font-bold mb-4 transition-colors">
+                        IGD RS Dian Husada
+                    </span>
+                    <h1 class="text-5xl md:text-7xl font-bold tracking-tight mb-4 text-[var(--m3-on-surface)]">
+                        Portal <span class="text-blue-600 dark:text-blue-400">Medis</span>
+                    </h1>
+                    <p class="text-xl opacity-90 text-[var(--m3-on-surface)] max-w-2xl font-medium leading-relaxed">
+                        Akses cepat database dan alat bantu klinis IGD.
+                    </p>
+                </div>
             </div>
         </header>
 
@@ -232,7 +260,7 @@
                 <div class="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center text-white text-xs">
                     <i class="fas fa-plus"></i>
                 </div>
-                <span class="font-bold text-sm tracking-wide">instalasi Gawat Darurat v1.0</span>
+                <span class="font-bold text-sm tracking-wide">Instalasi Gawat Darurat v1.2</span>
             </div>
             <nav class="flex gap-8 text-xs font-bold uppercase tracking-widest">
                 <a href="#" class="hover:text-blue-500 transition-colors">Bantuan</a>
