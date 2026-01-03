@@ -29,7 +29,6 @@
             --header-badge-bg: #e0e7ff;
             --header-badge-text: #3730a3;
             
-            /* Update Banner Colors */
             --banner-bg: rgba(255, 255, 255, 0.85);
             --banner-text: #1a1c1e;
             --banner-border: rgba(0, 0, 0, 0.1);
@@ -66,7 +65,6 @@
             overflow-x: hidden;
         }
 
-        /* Modern Top Banner for Update */
         #update-banner {
             position: fixed;
             top: 0;
@@ -90,9 +88,7 @@
             box-shadow: 0 4px 15px rgba(0,0,0,0.05);
         }
 
-        #update-banner.show {
-            transform: translateY(0);
-        }
+        #update-banner.show { transform: translateY(0); }
 
         .pulse-icon {
             color: #3b82f6;
@@ -118,9 +114,7 @@
             text-decoration: none;
         }
 
-        body.dark-mode .m3-card {
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
+        body.dark-mode .m3-card { border: 1px solid rgba(255, 255, 255, 0.05); }
 
         .m3-card:hover {
             transform: scale(1.02);
@@ -143,9 +137,7 @@
             background-color: var(--m3-icon-overlay);
         }
 
-        .m3-card:hover .m3-icon-bg {
-            transform: rotate(-10deg) scale(1.1);
-        }
+        .m3-card:hover .m3-icon-bg { transform: rotate(-10deg) scale(1.1); }
 
         .theme-toggle {
             position: fixed;
@@ -186,26 +178,84 @@
             filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1));
         }
 
-        @media (min-width: 768px) {
-            .logo-img { width: 120px; }
+        /* Crew Styling */
+        .crew-chip {
+            background-color: var(--m3-secondary-container);
+            color: var(--m3-on-secondary-container);
+            padding: 10px 18px;
+            border-radius: 14px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s cubic-bezier(0.2, 0, 0, 1);
+            border: 1px solid transparent;
         }
+
+        .crew-chip i { font-size: 0.85rem; opacity: 0.8; }
+        
+        .crew-chip:hover {
+            transform: translateY(-3px) scale(1.05);
+            background-color: var(--m3-primary-container);
+            color: var(--m3-on-primary-container);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+        }
+
+        /* Doctor Styling */
+        .doctor-chip {
+            background-color: var(--m3-tertiary-container);
+            color: var(--m3-on-tertiary-container);
+            padding: 10px 18px;
+            border-radius: 14px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s cubic-bezier(0.2, 0, 0, 1);
+        }
+
+        .doctor-chip:hover {
+            transform: translateY(-3px) scale(1.05);
+            filter: brightness(0.95);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+        }
+
+        .head-crew-chip {
+            background-color: #3b82f6;
+            color: white;
+            padding: 14px 28px;
+            border-radius: 20px;
+            font-size: 1rem;
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            box-shadow: 0 10px 20px rgba(59, 130, 246, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .head-crew-chip:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 25px rgba(59, 130, 246, 0.3);
+        }
+
+        @media (min-width: 768px) { .logo-img { width: 120px; } }
     </style>
 </head>
 <body class="p-6 md:p-12 lg:p-20">
 
-    <!-- Notifikasi Pembaruan (Top Banner) -->
     <div id="update-banner">
         <i class="fas fa-sync-alt pulse-icon"></i>
         <span>Pembaruan sistem tersedia. Memperbarui antarmuka...</span>
     </div>
 
-    <!-- Tombol Ganti Tema -->
     <button class="theme-toggle" id="themeToggle" aria-label="Ganti Tema">
         <i class="fas fa-moon" id="themeIcon"></i>
     </button>
 
     <main class="max-w-7xl mx-auto">
-        <!-- Header Section -->
         <header class="mb-16">
             <div class="flex flex-col md:flex-row items-center gap-8 md:gap-12">
                 <img src="LOGO IGD.png" 
@@ -214,7 +264,7 @@
                      onerror="this.src='https://via.placeholder.com/120?text=IGD+DH'">
 
                 <div class="text-center md:text-left">
-                    <span class="inline-block px-4 py-1.5 rounded-full bg-[var(--header-badge-bg)] text-[var(--header-badge-text)] text-sm font-bold mb-4 transition-colors">
+                    <span class="inline-block px-4 py-1.5 rounded-full bg-[var(--header-badge-bg)] text-[var(--header-badge-text)] text-sm font-bold mb-4">
                         IGD RS Dian Husada
                     </span>
                     <h1 class="text-5xl md:text-7xl font-bold tracking-tight mb-4 text-[var(--m3-on-surface)]">
@@ -228,7 +278,7 @@
         </header>
 
         <!-- Grid Menu -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-24">
             <a href="https://igdrsdh.github.io/Aplikasi-Laporan-Harian/" class="m3-card container-primary p-8 group">
                 <div class="m3-icon-bg mb-10">
                     <i class="fas fa-clipboard-list text-2xl"></i>
@@ -282,24 +332,79 @@
             </a>
         </div>
 
+        <!-- Section: Crew IGD (Tribute) -->
+        <section class="mb-20 text-center">
+            <div class="flex items-center gap-4 mb-10">
+                <div class="h-[1px] flex-grow bg-slate-200 dark:bg-slate-800"></div>
+                <h3 class="text-xs font-black uppercase tracking-[0.4em] text-blue-600 dark:text-blue-400 opacity-90">
+                    Struktur Organisasi & Personil IGD
+                </h3>
+                <div class="h-[1px] flex-grow bg-slate-200 dark:bg-slate-800"></div>
+            </div>
+            
+            <!-- Kepala Ruang -->
+            <div class="mb-14">
+                <div class="inline-block">
+                    <p class="text-[10px] font-bold uppercase tracking-widest mb-2 opacity-60">Kepala Ruang</p>
+                    <div class="head-crew-chip">
+                        <i class="fas fa-user-tie"></i>
+                        <span>Ns. Ari Juniardi S.Kep</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dokter Section -->
+            <div class="mb-14">
+                <p class="text-[10px] font-bold uppercase tracking-widest mb-6 opacity-60">Tim Medis / Dokter</p>
+                <div class="flex flex-wrap justify-center gap-4 max-w-5xl mx-auto">
+                    <div class="doctor-chip"><i class="fas fa-user-md"></i> dr. Sukresno Tjahjo W., M.Kes</div>
+                    <div class="doctor-chip"><i class="fas fa-user-md"></i> dr. Syntia Arisandi</div>
+                    <div class="doctor-chip"><i class="fas fa-user-md"></i> dr. Felicia Putri Hartono</div>
+                    <div class="doctor-chip"><i class="fas fa-user-md"></i> dr. Imam Fadli</div>
+                    <div class="doctor-chip"><i class="fas fa-user-md"></i> dr. Deo Sanjaya</div>
+                    <div class="doctor-chip"><i class="fas fa-user-md"></i> dr. Farah Shania</div>
+                    <div class="doctor-chip"><i class="fas fa-user-md"></i> dr. Evva Mardiyana</div>
+                    <div class="doctor-chip"><i class="fas fa-user-md"></i> dr. Ratna Dewi</div>
+                </div>
+            </div>
+
+            <!-- Crew Section (14 Orang Perawat) -->
+            <div>
+                <p class="text-[10px] font-bold uppercase tracking-widest mb-6 opacity-60">Tim Keperawatan</p>
+                <div class="flex flex-wrap justify-center gap-4 max-w-6xl mx-auto">
+                    <div class="crew-chip"><i class="fas fa-user-nurse"></i> Wulia Susanti A.Md.Kep</div>
+                    <div class="crew-chip"><i class="fas fa-user-nurse"></i> Rendika Aditiya A.Md.Kep</div>
+                    <div class="crew-chip"><i class="fas fa-user-nurse"></i> Ns. Wahyu Angga P S.Kep</div>
+                    <div class="crew-chip"><i class="fas fa-user-nurse"></i> Ns. Reiza Oktavia S.Kep</div>
+                    <div class="crew-chip"><i class="fas fa-user-nurse"></i> Ns. Nanang Hanafi S.Kep</div>
+                    <div class="crew-chip"><i class="fas fa-user-nurse"></i> Ns. Devi Kharismanda S.Kep</div>
+                    <div class="crew-chip"><i class="fas fa-user-nurse"></i> Ns. Ivo Pramaysella S.Kep</div>
+                    <div class="crew-chip"><i class="fas fa-user-nurse"></i> Ade Irma Nila A.Md.Kep</div>
+                    <div class="crew-chip"><i class="fas fa-user-nurse"></i> Adam Archi R A.Md.Kep</div>
+                    <div class="crew-chip"><i class="fas fa-user-nurse"></i> Titis Nur A A.Md.Kep</div>
+                    <div class="crew-chip"><i class="fas fa-user-nurse"></i> Ns. Meylisa Anastasya S.Kep</div>
+                    <div class="crew-chip"><i class="fas fa-user-nurse"></i> Renin Lindasari A.Md.Kep</div>
+                    <div class="crew-chip"><i class="fas fa-user-nurse"></i> Mardiyanti Nur A.Md.KepA</div>
+                    <div class="crew-chip"><i class="fas fa-user-nurse"></i> Ns. Lisa Munika S.Kep</div>
+                </div>
+            </div>
+        </section>
+
         <!-- Footer -->
-        <footer class="mt-24 pt-10 border-t border-slate-200 dark:border-slate-800 flex flex-col md:flex-row items-center justify-between gap-6 opacity-60">
+        <footer class="pt-10 border-t border-slate-200 dark:border-slate-800 flex flex-col md:flex-row items-center justify-between gap-6 opacity-60">
             <div class="flex items-center gap-3">
                 <div class="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center text-white text-xs">
                     <i class="fas fa-plus"></i>
                 </div>
-                <span class="font-bold text-sm tracking-wide">Instalasi Gawat Darurat v1.2</span>
+                <span class="font-bold text-sm tracking-wide">Instalasi Gawat Darurat v1.2.8</span>
             </div>
-            <nav class="flex gap-8 text-xs font-bold uppercase tracking-widest">
-                <a href="#" class="hover:text-blue-500 transition-colors">Bantuan</a>
-                <a href="#" class="hover:text-blue-500 transition-colors">Privasi</a>
-                <a href="#" class="hover:text-blue-500 transition-colors">Kontak</a>
-            </nav>
+            <div class="text-[10px] font-bold uppercase tracking-widest text-center md:text-right">
+                Bekerja dengan Hati, Melayani dengan Empati • RS Dian Husada
+            </div>
         </footer>
     </main>
 
     <script>
-        // --- LOGIKA TEMA ---
         const themeToggle = document.getElementById('themeToggle');
         const themeIcon = document.getElementById('themeIcon');
         const body = document.body;
@@ -317,7 +422,7 @@
             updateIcon();
         });
 
-        // --- FITUR AUTO UPDATE (REFINED UI) ---
+        // --- FITUR AUTO UPDATE ---
         const REPO_OWNER = "igdrsdh";
         const REPO_NAME = "emergency"; 
         const CHECK_INTERVAL = 60000; 
@@ -336,16 +441,10 @@
                 const currentSha = data.sha;
 
                 if (lastSha && lastSha !== currentSha) {
-                    // Tampilkan Banner
                     const banner = document.getElementById('update-banner');
                     banner.classList.add('show');
-                    
                     localStorage.setItem('last_github_sha', currentSha);
-                    
-                    // Tunggu agar transisi selesai, lalu muat ulang
-                    setTimeout(() => {
-                        window.location.reload(true);
-                    }, 2500);
+                    setTimeout(() => { window.location.reload(true); }, 2500);
                 } else {
                     localStorage.setItem('last_github_sha', currentSha);
                 }
@@ -356,7 +455,6 @@
 
         checkForUpdates();
         setInterval(checkForUpdates, CHECK_INTERVAL);
-        window.addEventListener('online', checkForUpdates);
     </script>
 </body>
 </html>
