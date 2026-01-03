@@ -14,7 +14,6 @@
 
     <style>
         :root {
-            /* Light Mode Colors - Original M3 */
             --m3-surface: #fdfbff;
             --m3-on-surface: #1a1c1e;
             --m3-primary-container: #d1e4ff;
@@ -29,9 +28,13 @@
             --m3-icon-overlay: rgba(255, 255, 255, 0.5);
             --header-badge-bg: #e0e7ff;
             --header-badge-text: #3730a3;
+            
+            /* Update Banner Colors */
+            --banner-bg: rgba(255, 255, 255, 0.85);
+            --banner-text: #1a1c1e;
+            --banner-border: rgba(0, 0, 0, 0.1);
         }
 
-        /* Dark Mode Colors */
         body.dark-mode {
             --m3-surface: #111318;
             --m3-on-surface: #e2e2e6;
@@ -47,6 +50,10 @@
             --m3-icon-overlay: rgba(0, 0, 0, 0.2);
             --header-badge-bg: #1e293b;
             --header-badge-text: #94a3b8;
+            
+            --banner-bg: rgba(30, 41, 59, 0.85);
+            --banner-text: #f8fafc;
+            --banner-border: rgba(255, 255, 255, 0.1);
         }
 
         body {
@@ -56,6 +63,46 @@
             transition: background-color 0.3s ease, color 0.3s ease;
             -webkit-font-smoothing: antialiased;
             margin: 0;
+            overflow-x: hidden;
+        }
+
+        /* Modern Top Banner for Update */
+        #update-banner {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 10000;
+            background-color: var(--banner-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--banner-border);
+            color: var(--banner-text);
+            padding: 12px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transform: translateY(-100%);
+            transition: transform 0.5s cubic-bezier(0.05, 0.7, 0.1, 1);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        #update-banner.show {
+            transform: translateY(0);
+        }
+
+        .pulse-icon {
+            color: #3b82f6;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.6; transform: scale(1.1); }
+            100% { opacity: 1; transform: scale(1); }
         }
 
         .m3-card {
@@ -100,7 +147,6 @@
             transform: rotate(-10deg) scale(1.1);
         }
 
-        /* Toggle Button Styling */
         .theme-toggle {
             position: fixed;
             top: 24px;
@@ -120,14 +166,6 @@
             border: none;
         }
 
-        .theme-toggle:hover {
-            transform: scale(1.1);
-        }
-
-        .theme-toggle i {
-            font-size: 1.4rem;
-        }
-
         .arrow-btn {
             background-color: rgba(0, 0, 0, 0.05);
             width: 44px;
@@ -141,10 +179,6 @@
             align-self: flex-end;
         }
 
-        body.dark-mode .arrow-btn {
-            background-color: rgba(255, 255, 255, 0.1);
-        }
-
         .logo-img {
             width: 80px;
             height: auto;
@@ -153,13 +187,17 @@
         }
 
         @media (min-width: 768px) {
-            .logo-img {
-                width: 120px;
-            }
+            .logo-img { width: 120px; }
         }
     </style>
 </head>
 <body class="p-6 md:p-12 lg:p-20">
+
+    <!-- Notifikasi Pembaruan (Top Banner) -->
+    <div id="update-banner">
+        <i class="fas fa-sync-alt pulse-icon"></i>
+        <span>Pembaruan sistem tersedia. Memperbarui antarmuka...</span>
+    </div>
 
     <!-- Tombol Ganti Tema -->
     <button class="theme-toggle" id="themeToggle" aria-label="Ganti Tema">
@@ -170,13 +208,11 @@
         <!-- Header Section -->
         <header class="mb-16">
             <div class="flex flex-col md:flex-row items-center gap-8 md:gap-12">
-                <!-- Logo Container -->
-                    <img src="LOGO IGD.png" 
-                         alt="Logo IGD RS Dian Husada" 
-                         class="logo-img"
-                         onerror="this.src='https://via.placeholder.com/120?text=IGD+DH'">
+                <img src="LOGO IGD.png" 
+                     alt="Logo IGD RS Dian Husada" 
+                     class="logo-img"
+                     onerror="this.src='https://via.placeholder.com/120?text=IGD+DH'">
 
-                <!-- Text Content -->
                 <div class="text-center md:text-left">
                     <span class="inline-block px-4 py-1.5 rounded-full bg-[var(--header-badge-bg)] text-[var(--header-badge-text)] text-sm font-bold mb-4 transition-colors">
                         IGD RS Dian Husada
@@ -191,10 +227,8 @@
             </div>
         </header>
 
-        <!-- Main Grid -->
+        <!-- Grid Menu -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            
-            <!-- Card 1 -->
             <a href="https://igdrsdh.github.io/Aplikasi-Laporan-Harian/" class="m3-card container-primary p-8 group">
                 <div class="m3-icon-bg mb-10">
                     <i class="fas fa-clipboard-list text-2xl"></i>
@@ -208,7 +242,6 @@
                 </div>
             </a>
 
-            <!-- Card 2 -->
             <a href="https://igdrsdh.github.io/Multitool-IGD/" class="m3-card container-secondary p-8 group">
                 <div class="m3-icon-bg mb-10">
                     <i class="fas fa-square-root-alt text-2xl"></i>
@@ -222,7 +255,6 @@
                 </div>
             </a>
 
-            <!-- Card 3 -->
             <a href="https://igdrsdh.github.io/data-hiv/" class="m3-card container-tertiary p-8 group">
                 <div class="m3-icon-bg mb-10">
                     <i class="fas fa-notes-medical text-2xl"></i>
@@ -236,7 +268,6 @@
                 </div>
             </a>
 
-            <!-- Card 4 -->
             <a href="https://igdrsdh.github.io/Database-Obat-Diare/" class="m3-card container-error p-8 group">
                 <div class="m3-icon-bg mb-10">
                     <i class="fas fa-capsules text-2xl"></i>
@@ -249,7 +280,6 @@
                     <i class="fas fa-arrow-right"></i>
                 </div>
             </a>
-
         </div>
 
         <!-- Footer -->
@@ -269,22 +299,16 @@
     </main>
 
     <script>
+        // --- LOGIKA TEMA ---
         const themeToggle = document.getElementById('themeToggle');
         const themeIcon = document.getElementById('themeIcon');
         const body = document.body;
 
-        function updateIcon() {
-            if (body.classList.contains('dark-mode')) {
-                themeIcon.className = 'fas fa-sun';
-            } else {
-                themeIcon.className = 'fas fa-moon';
-            }
-        }
+        const updateIcon = () => {
+            themeIcon.className = body.classList.contains('dark-mode') ? 'fas fa-sun' : 'fas fa-moon';
+        };
 
-        const currentTheme = localStorage.getItem('theme');
-        if (currentTheme === 'dark') {
-            body.classList.add('dark-mode');
-        }
+        if (localStorage.getItem('theme') === 'dark') body.classList.add('dark-mode');
         updateIcon();
 
         themeToggle.addEventListener('click', () => {
@@ -292,6 +316,47 @@
             localStorage.setItem('theme', body.classList.contains('dark-mode') ? 'dark' : 'light');
             updateIcon();
         });
+
+        // --- FITUR AUTO UPDATE (REFINED UI) ---
+        const REPO_OWNER = "igdrsdh";
+        const REPO_NAME = "emergency"; 
+        const CHECK_INTERVAL = 60000; 
+
+        let lastSha = localStorage.getItem('last_github_sha');
+
+        async function checkForUpdates() {
+            try {
+                const response = await fetch(`https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/commits/main`, {
+                    headers: { 'Accept': 'application/vnd.github.v3+json' }
+                });
+                
+                if (!response.ok) return;
+
+                const data = await response.json();
+                const currentSha = data.sha;
+
+                if (lastSha && lastSha !== currentSha) {
+                    // Tampilkan Banner
+                    const banner = document.getElementById('update-banner');
+                    banner.classList.add('show');
+                    
+                    localStorage.setItem('last_github_sha', currentSha);
+                    
+                    // Tunggu agar transisi selesai, lalu muat ulang
+                    setTimeout(() => {
+                        window.location.reload(true);
+                    }, 2500);
+                } else {
+                    localStorage.setItem('last_github_sha', currentSha);
+                }
+            } catch (error) {
+                console.warn("Update check failed (Silent)");
+            }
+        }
+
+        checkForUpdates();
+        setInterval(checkForUpdates, CHECK_INTERVAL);
+        window.addEventListener('online', checkForUpdates);
     </script>
 </body>
 </html>
