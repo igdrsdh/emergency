@@ -16,14 +16,22 @@
         :root {
             --m3-surface: #fdfbff;
             --m3-on-surface: #1a1c1e;
+            /* Blue - Primary */
             --m3-primary-container: #d1e4ff;
             --m3-on-primary-container: #001d36;
-            --m3-secondary-container: #e0e2ec;
-            --m3-on-secondary-container: #191c1e;
+            /* Teal/Green - Secondary (Baru untuk Kalkulator) */
+            --m3-secondary-container: #ceead6;
+            --m3-on-secondary-container: #0c2011;
+            /* Purple - Tertiary */
             --m3-tertiary-container: #f5d9ff;
             --m3-on-tertiary-container: #261431;
+            /* Red - Error */
             --m3-error-container: #ffdad6;
             --m3-on-error-container: #410002;
+            /* Grey/Blue - Variant */
+            --m3-variant-container: #dfe2eb;
+            --m3-on-variant-container: #43474e;
+            
             --m3-card-shadow: rgba(0, 0, 0, 0.08);
             --m3-icon-overlay: rgba(255, 255, 255, 0.5);
             --header-badge-bg: #e0e7ff;
@@ -39,12 +47,14 @@
             --m3-on-surface: #e2e2e6;
             --m3-primary-container: #00497d;
             --m3-on-primary-container: #d1e4ff;
-            --m3-secondary-container: #43474e;
-            --m3-on-secondary-container: #e2e2e6;
+            --m3-secondary-container: #1e4d34;
+            --m3-on-secondary-container: #ceead6;
             --m3-tertiary-container: #523e5d;
             --m3-on-tertiary-container: #f5d9ff;
             --m3-error-container: #93000a;
             --m3-on-error-container: #ffdad6;
+            --m3-variant-container: #3f474e;
+            --m3-on-variant-container: #c3c7cf;
             --m3-card-shadow: rgba(0, 0, 0, 0.4);
             --m3-icon-overlay: rgba(0, 0, 0, 0.2);
             --header-badge-bg: #1e293b;
@@ -125,6 +135,7 @@
         .container-secondary { background-color: var(--m3-secondary-container); color: var(--m3-on-secondary-container); }
         .container-tertiary { background-color: var(--m3-tertiary-container); color: var(--m3-on-tertiary-container); }
         .container-error { background-color: var(--m3-error-container); color: var(--m3-on-error-container); }
+        .container-variant { background-color: var(--m3-variant-container); color: var(--m3-on-variant-container); }
 
         .m3-icon-bg {
             border-radius: 20px;
@@ -178,10 +189,9 @@
             filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1));
         }
 
-        /* Crew Styling */
         .crew-chip {
-            background-color: var(--m3-secondary-container);
-            color: var(--m3-on-secondary-container);
+            background-color: var(--m3-variant-container);
+            color: var(--m3-on-variant-container);
             padding: 10px 18px;
             border-radius: 14px;
             font-size: 0.85rem;
@@ -202,7 +212,6 @@
             box-shadow: 0 6px 15px rgba(0,0,0,0.1);
         }
 
-        /* Doctor Styling */
         .doctor-chip {
             background-color: var(--m3-tertiary-container);
             color: var(--m3-on-tertiary-container);
@@ -277,62 +286,80 @@
             </div>
         </header>
 
-        <!-- Grid Menu -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-24">
+        <!-- Grid Menu: 5 Columns with Distinct Colors -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 mb-24">
+            <!-- Laporan Harian (Primary - Biru) -->
             <a href="https://igdrsdh.github.io/Aplikasi-Laporan-Harian/" class="m3-card container-primary p-8 group">
                 <div class="m3-icon-bg mb-10">
                     <i class="fas fa-clipboard-list text-2xl"></i>
                 </div>
                 <div class="flex-grow">
-                    <h2 class="text-2xl font-bold mb-3">Laporan Harian</h2>
-                    <p class="text-sm opacity-80 leading-snug font-medium">Akses alat untuk mengisi laporan harian kunjungan pasien IGD.</p>
+                    <h2 class="text-xl font-bold mb-3">Laporan Harian</h2>
+                    <p class="text-xs opacity-80 leading-snug font-medium">Isi laporan harian kunjungan pasien IGD.</p>
                 </div>
                 <div class="arrow-btn opacity-0 group-hover:opacity-100">
                     <i class="fas fa-arrow-right"></i>
                 </div>
             </a>
 
+            <!-- Kalkulator Medis (Secondary - Hijau/Teal) -->
             <a href="https://igdrsdh.github.io/Multitool-IGD/" class="m3-card container-secondary p-8 group">
                 <div class="m3-icon-bg mb-10">
                     <i class="fas fa-square-root-alt text-2xl"></i>
                 </div>
                 <div class="flex-grow">
-                    <h2 class="text-2xl font-bold mb-3">Kalkulator Medis</h2>
-                    <p class="text-sm opacity-80 leading-snug font-medium">Hitung dosis obat, luas luka bakar, dan skor GCS.</p>
+                    <h2 class="text-xl font-bold mb-3">Kalkulator Medis</h2>
+                    <p class="text-xs opacity-80 leading-snug font-medium">Hitung dosis obat, luka bakar, dan GCS.</p>
                 </div>
                 <div class="arrow-btn opacity-0 group-hover:opacity-100">
                     <i class="fas fa-arrow-right"></i>
                 </div>
             </a>
 
+            <!-- Pasien HIV (Tertiary - Ungu) -->
             <a href="https://input-hiv.netlify.app/" class="m3-card container-tertiary p-8 group">
                 <div class="m3-icon-bg mb-10">
                     <i class="fas fa-notes-medical text-2xl"></i>
                 </div>
                 <div class="flex-grow">
-                    <h2 class="text-2xl font-bold mb-3">Pasien HIV</h2>
-                    <p class="text-sm opacity-80 leading-snug font-medium">Pencatatan data pasien dengan diagnosa HIV.</p>
+                    <h2 class="text-xl font-bold mb-3">Pasien HIV</h2>
+                    <p class="text-xs opacity-80 leading-snug font-medium">Pencatatan data pasien diagnosa HIV.</p>
                 </div>
                 <div class="arrow-btn opacity-0 group-hover:opacity-100">
                     <i class="fas fa-arrow-right"></i>
                 </div>
             </a>
 
+            <!-- Obat Diare (Error - Merah) -->
             <a href="https://input-obat-diare.netlify.app/" class="m3-card container-error p-8 group">
                 <div class="m3-icon-bg mb-10">
                     <i class="fas fa-capsules text-2xl"></i>
                 </div>
                 <div class="flex-grow">
-                    <h2 class="text-2xl font-bold mb-3">Obat Diare</h2>
-                    <p class="text-sm opacity-80 leading-snug font-medium">Pelaporan penggunaan obat antidiare.</p>
+                    <h2 class="text-xl font-bold mb-3">Obat Diare</h2>
+                    <p class="text-xs opacity-80 leading-snug font-medium">Pelaporan penggunaan obat antidiare.</p>
                 </div>
                 <div class="arrow-btn opacity-0 group-hover:opacity-100">
                     <i class="fas fa-arrow-right"></i>
                 </div>
             </a>
+
+            <!-- Drive IGD (Variant - Abu/Biru Gelap) -->
+            <a href="https://drive.google.com/drive/u/0/mobile/folders/1yKZu0DHZ0k084Q6p0FAW63Oc7Zy3e9ZF" target="_blank" class="m3-card container-variant p-8 group">
+                <div class="m3-icon-bg mb-10">
+                    <i class="fab fa-google-drive text-2xl"></i>
+                </div>
+                <div class="flex-grow">
+                    <h2 class="text-xl font-bold mb-3">Drive IGD</h2>
+                    <p class="text-xs opacity-80 leading-snug font-medium">Penyimpanan dokumen dan arsip digital IGD.</p>
+                </div>
+                <div class="arrow-btn opacity-0 group-hover:opacity-100">
+                    <i class="fas fa-external-link-alt"></i>
+                </div>
+            </a>
         </div>
 
-        <!-- Section: Crew IGD (Tribute) -->
+        <!-- Section: Crew IGD -->
         <section class="mb-20 text-center">
             <div class="flex items-center gap-4 mb-10">
                 <div class="h-[1px] flex-grow bg-slate-200 dark:bg-slate-800"></div>
@@ -342,7 +369,6 @@
                 <div class="h-[1px] flex-grow bg-slate-200 dark:bg-slate-800"></div>
             </div>
             
-            <!-- Kepala Ruang -->
             <div class="mb-14">
                 <div class="inline-block">
                     <p class="text-[10px] font-bold uppercase tracking-widest mb-2 opacity-60">Kepala Ruang</p>
@@ -353,7 +379,6 @@
                 </div>
             </div>
 
-            <!-- Dokter Section -->
             <div class="mb-14">
                 <p class="text-[10px] font-bold uppercase tracking-widest mb-6 opacity-60">Tim Medis / Dokter</p>
                 <div class="flex flex-wrap justify-center gap-4 max-w-5xl mx-auto">
@@ -368,7 +393,6 @@
                 </div>
             </div>
 
-            <!-- Crew Section (14 Orang Perawat) -->
             <div>
                 <p class="text-[10px] font-bold uppercase tracking-widest mb-6 opacity-60">Tim Keperawatan</p>
                 <div class="flex flex-wrap justify-center gap-4 max-w-6xl mx-auto">
@@ -390,13 +414,12 @@
             </div>
         </section>
 
-        <!-- Footer -->
         <footer class="pt-10 border-t border-slate-200 dark:border-slate-800 flex flex-col md:flex-row items-center justify-between gap-6 opacity-60">
             <div class="flex items-center gap-3">
                 <div class="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center text-white text-xs">
                     <i class="fas fa-plus"></i>
                 </div>
-                <span class="font-bold text-sm tracking-wide">Instalasi Gawat Darurat v1.2.8</span>
+                <span class="font-bold text-sm tracking-wide">Instalasi Gawat Darurat v1.4.0</span>
             </div>
             <div class="text-[10px] font-bold uppercase tracking-widest text-center md:text-right">
                 Bekerja dengan Hati, Melayani dengan Empati • RS Dian Husada
@@ -422,7 +445,6 @@
             updateIcon();
         });
 
-        // --- FITUR AUTO UPDATE ---
         const REPO_OWNER = "igdrsdh";
         const REPO_NAME = "emergency"; 
         const CHECK_INTERVAL = 60000; 
