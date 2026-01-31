@@ -16,24 +16,19 @@
         :root {
             --m3-surface: #fdfbff;
             --m3-on-surface: #1a1c1e;
-            /* Blue - Primary */
-            --m3-primary-container: #d1e4ff;
-            --m3-on-primary-container: #001d36;
-            /* Teal/Green - Secondary (Baru untuk Kalkulator) */
-            --m3-secondary-container: #ceead6;
-            --m3-on-secondary-container: #0c2011;
-            /* Purple - Tertiary */
-            --m3-tertiary-container: #f5d9ff;
-            --m3-on-tertiary-container: #261431;
-            /* Red - Error */
-            --m3-error-container: #ffdad6;
-            --m3-on-error-container: #410002;
-            /* Grey/Blue - Variant */
-            --m3-variant-container: #dfe2eb;
-            --m3-on-variant-container: #43474e;
+            /* Minimalist Colors */
+            --card-blue: #eff6ff;
+            --card-blue-text: #1e40af;
+            --card-green: #f0fdf4;
+            --card-green-text: #166534;
+            --card-purple: #faf5ff;
+            --card-purple-text: #6b21a8;
+            --card-red: #fef2f2;
+            --card-red-text: #991b1b;
+            --card-grey: #f8fafc;
+            --card-grey-text: #334155;
             
-            --m3-card-shadow: rgba(0, 0, 0, 0.08);
-            --m3-icon-overlay: rgba(255, 255, 255, 0.5);
+            --m3-card-shadow: rgba(0, 0, 0, 0.04);
             --header-badge-bg: #e0e7ff;
             --header-badge-text: #3730a3;
             
@@ -43,20 +38,20 @@
         }
 
         body.dark-mode {
-            --m3-surface: #111318;
-            --m3-on-surface: #e2e2e6;
-            --m3-primary-container: #00497d;
-            --m3-on-primary-container: #d1e4ff;
-            --m3-secondary-container: #1e4d34;
-            --m3-on-secondary-container: #ceead6;
-            --m3-tertiary-container: #523e5d;
-            --m3-on-tertiary-container: #f5d9ff;
-            --m3-error-container: #93000a;
-            --m3-on-error-container: #ffdad6;
-            --m3-variant-container: #3f474e;
-            --m3-on-variant-container: #c3c7cf;
-            --m3-card-shadow: rgba(0, 0, 0, 0.4);
-            --m3-icon-overlay: rgba(0, 0, 0, 0.2);
+            --m3-surface: #0f172a;
+            --m3-on-surface: #f1f5f9;
+            --card-blue: #1e293b;
+            --card-blue-text: #93c5fd;
+            --card-green: #1e293b;
+            --card-green-text: #86efac;
+            --card-purple: #1e293b;
+            --card-purple-text: #d8b4fe;
+            --card-red: #1e293b;
+            --card-red-text: #fca5a5;
+            --card-grey: #1e293b;
+            --card-grey-text: #cbd5e1;
+            
+            --m3-card-shadow: rgba(0, 0, 0, 0.3);
             --header-badge-bg: #1e293b;
             --header-badge-text: #94a3b8;
             
@@ -75,11 +70,10 @@
             overflow-x: hidden;
         }
 
+        /* BANNER */
         #update-banner {
             position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
+            top: 0; left: 0; right: 0;
             z-index: 10000;
             background-color: var(--banner-bg);
             backdrop-filter: blur(12px);
@@ -87,177 +81,153 @@
             border-bottom: 1px solid var(--banner-border);
             color: var(--banner-text);
             padding: 12px 24px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 16px;
-            font-size: 0.95rem;
-            font-weight: 500;
+            display: flex; align-items: center; justify-content: center;
+            gap: 16px; font-size: 0.95rem; font-weight: 500;
             transform: translateY(-100%);
             transition: transform 0.5s cubic-bezier(0.05, 0.7, 0.1, 1);
             box-shadow: 0 4px 15px rgba(0,0,0,0.05);
         }
-
         #update-banner.show { transform: translateY(0); }
 
-        .pulse-icon {
-            color: #3b82f6;
-            animation: pulse 2s infinite;
-        }
-
+        .pulse-icon { color: #3b82f6; animation: pulse 2s infinite; }
         @keyframes pulse {
             0% { opacity: 1; transform: scale(1); }
             50% { opacity: 0.6; transform: scale(1.1); }
             100% { opacity: 1; transform: scale(1); }
         }
 
+        /* MINIMALIST MODERN CARDS */
         .m3-card {
-            border-radius: 28px;
-            transition: all 0.4s cubic-bezier(0.2, 0, 0, 1);
+            border-radius: 24px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
-            overflow: hidden;
             display: flex;
             flex-direction: column;
-            height: 100%;
+            min-height: 200px;
             cursor: pointer;
-            border: 1px solid transparent;
+            border: 1px solid rgba(0,0,0,0.05);
             text-decoration: none;
+            padding: 28px;
+            background-color: var(--card-grey);
         }
 
         body.dark-mode .m3-card { border: 1px solid rgba(255, 255, 255, 0.05); }
 
         .m3-card:hover {
-            transform: scale(1.02);
-            box-shadow: 0 12px 24px var(--m3-card-shadow);
+            transform: translateY(-6px);
+            box-shadow: 0 15px 30px var(--m3-card-shadow);
+            border-color: transparent;
         }
 
-        .container-primary { background-color: var(--m3-primary-container); color: var(--m3-on-primary-container); }
-        .container-secondary { background-color: var(--m3-secondary-container); color: var(--m3-on-secondary-container); }
-        .container-tertiary { background-color: var(--m3-tertiary-container); color: var(--m3-on-tertiary-container); }
-        .container-error { background-color: var(--m3-error-container); color: var(--m3-on-error-container); }
-        .container-variant { background-color: var(--m3-variant-container); color: var(--m3-on-variant-container); }
+        .card-primary { background-color: var(--card-blue); color: var(--card-blue-text); }
+        .card-secondary { background-color: var(--card-green); color: var(--card-green-text); }
+        .card-tertiary { background-color: var(--card-purple); color: var(--card-purple-text); }
+        .card-error { background-color: var(--card-red); color: var(--card-red-text); }
+        .card-variant { background-color: var(--card-grey); color: var(--card-grey-text); }
 
         .m3-icon-bg {
-            border-radius: 20px;
-            width: 64px;
-            height: 64px;
+            width: 52px;
+            height: 52px;
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: transform 0.3s ease;
-            background-color: var(--m3-icon-overlay);
+            transition: all 0.3s ease;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+            position: relative;
         }
 
-        .m3-card:hover .m3-icon-bg { transform: rotate(-10deg) scale(1.1); }
+        /* Decorative Circle behind icon on hover */
+        .m3-icon-bg::after {
+            content: '';
+            position: absolute;
+            width: 100%; height: 100%;
+            background: currentColor;
+            opacity: 0.1;
+            border-radius: 50%;
+            transform: scale(0);
+            transition: transform 0.3s ease;
+        }
 
+        .m3-card:hover .m3-icon-bg::after {
+            transform: scale(1.4);
+        }
+
+        .m3-card-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 6px;
+        }
+
+        .m3-card-desc {
+            font-size: 0.85rem;
+            line-height: 1.4;
+            opacity: 0.7;
+            font-weight: 500;
+        }
+
+        .card-footer {
+            margin-top: auto;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            opacity: 0;
+            transform: translateX(-10px);
+            transition: all 0.3s ease;
+        }
+
+        .m3-card:hover .card-footer {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* THEME TOGGLE */
         .theme-toggle {
             position: fixed;
-            top: 24px;
-            right: 24px;
-            width: 56px;
-            height: 56px;
-            border-radius: 16px;
-            background-color: var(--m3-primary-container);
-            color: var(--m3-on-primary-container);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            z-index: 1000;
-            transition: all 0.3s cubic-bezier(0.2, 0, 0, 1);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-            border: none;
-        }
-
-        .arrow-btn {
-            background-color: rgba(0, 0, 0, 0.05);
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-            margin-top: 24px;
-            align-self: flex-end;
-        }
-
-        .logo-img {
-            width: 80px;
-            height: auto;
-            object-fit: contain;
-            filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1));
-        }
-
-        .crew-chip {
-            background-color: var(--m3-variant-container);
-            color: var(--m3-on-variant-container);
-            padding: 10px 18px;
+            top: 24px; right: 24px;
+            width: 50px; height: 50px;
             border-radius: 14px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 10px;
+            background-color: var(--card-blue);
+            color: var(--card-blue-text);
+            display: flex; align-items: center; justify-content: center;
+            cursor: pointer; z-index: 1000;
             transition: all 0.3s cubic-bezier(0.2, 0, 0, 1);
-            border: 1px solid transparent;
+            border: 1px solid rgba(0,0,0,0.05);
         }
 
-        .crew-chip i { font-size: 0.85rem; opacity: 0.8; }
+        .logo-img { width: 80px; height: auto; object-fit: contain; filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1)); }
+
+        /* CHIPS */
+        .crew-chip, .doctor-chip {
+            padding: 8px 16px; border-radius: 12px; font-size: 0.8rem; font-weight: 600;
+            display: flex; align-items: center; gap: 8px; transition: all 0.3s ease;
+            border: 1px solid rgba(0,0,0,0.03);
+        }
+        .crew-chip { background-color: var(--card-grey); color: var(--card-grey-text); }
+        .doctor-chip { background-color: var(--card-purple); color: var(--card-purple-text); }
         
-        .crew-chip:hover {
-            transform: translateY(-3px) scale(1.05);
-            background-color: var(--m3-primary-container);
-            color: var(--m3-on-primary-container);
-            box-shadow: 0 6px 15px rgba(0,0,0,0.1);
-        }
-
-        .doctor-chip {
-            background-color: var(--m3-tertiary-container);
-            color: var(--m3-on-tertiary-container);
-            padding: 10px 18px;
-            border-radius: 14px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            transition: all 0.3s cubic-bezier(0.2, 0, 0, 1);
-        }
-
-        .doctor-chip:hover {
-            transform: translateY(-3px) scale(1.05);
-            filter: brightness(0.95);
-            box-shadow: 0 6px 15px rgba(0,0,0,0.1);
-        }
+        .crew-chip:hover, .doctor-chip:hover { transform: translateY(-2px); box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
 
         .head-crew-chip {
-            background-color: #3b82f6;
-            color: white;
-            padding: 14px 28px;
-            border-radius: 20px;
-            font-size: 1rem;
-            font-weight: 700;
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-            box-shadow: 0 10px 20px rgba(59, 130, 246, 0.2);
+            background-color: #2563eb; color: white; padding: 12px 24px; border-radius: 16px;
+            font-size: 0.95rem; font-weight: 700; display: inline-flex; align-items: center; gap: 10px;
             transition: all 0.3s ease;
         }
+        .head-crew-chip:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(37, 99, 235, 0.2); }
 
-        .head-crew-chip:hover {
-            transform: scale(1.05);
-            box-shadow: 0 15px 25px rgba(59, 130, 246, 0.3);
-        }
-
-        @media (min-width: 768px) { .logo-img { width: 120px; } }
+        @media (min-width: 768px) { .logo-img { width: 110px; } }
     </style>
 </head>
 <body class="p-6 md:p-12 lg:p-20">
 
     <div id="update-banner">
         <i class="fas fa-sync-alt pulse-icon"></i>
-        <span>Pembaruan sistem tersedia. Memperbarui antarmuka...</span>
+        <span>Sistem sedang sinkronisasi...</span>
     </div>
 
     <button class="theme-toggle" id="themeToggle" aria-label="Ganti Tema">
@@ -273,88 +243,84 @@
                      onerror="this.src='https://via.placeholder.com/120?text=IGD+DH'">
 
                 <div class="text-center md:text-left">
-                    <span class="inline-block px-4 py-1.5 rounded-full bg-[var(--header-badge-bg)] text-[var(--header-badge-text)] text-sm font-bold mb-4">
-                        IGD RS Dian Husada
+                    <span class="inline-block px-3 py-1 rounded-lg bg-[var(--header-badge-bg)] text-[var(--header-badge-text)] text-xs font-bold mb-4 tracking-wider uppercase">
+                        Portal Layanan IGD
                     </span>
-                    <h1 class="text-5xl md:text-7xl font-bold tracking-tight mb-4 text-[var(--m3-on-surface)]">
-                        Catatan <span class="text-blue-600 dark:text-blue-400">Medis</span>
+                    <h1 class="text-4xl md:text-6xl font-bold tracking-tight mb-3 text-[var(--m3-on-surface)]">
+                        Database <span class="text-blue-600 dark:text-blue-400">Medis</span>
                     </h1>
-                    <p class="text-xl opacity-90 text-[var(--m3-on-surface)] max-w-2xl font-medium leading-relaxed">
-                        Akses cepat database dan alat bantu klinis IGD.
+                    <p class="text-lg opacity-70 text-[var(--m3-on-surface)] max-w-xl font-medium">
+                        Satu pintu akses untuk pelaporan dan kalkulasi klinis.
                     </p>
                 </div>
             </div>
         </header>
 
-        <!-- Grid Menu: 5 Columns with Distinct Colors -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 mb-24">
-            <!-- Laporan Harian (Primary - Biru) -->
-            <a href="https://igdrsdh.github.io/Aplikasi-Laporan-Harian/" class="m3-card container-primary p-8 group">
-                <div class="m3-icon-bg mb-10">
-                    <i class="fas fa-clipboard-list text-2xl"></i>
+        <!-- GRID MENU: MINIMALIST MODERN CARDS -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-5 mb-24">
+            
+            <!-- Laporan Harian -->
+            <a href="https://igdrsdh.github.io/Aplikasi-Laporan-Harian/" class="m3-card card-primary">
+                <div class="m3-icon-bg">
+                    <i class="fas fa-file-signature"></i>
                 </div>
-                <div class="flex-grow">
-                    <h2 class="text-xl font-bold mb-3">Laporan Harian</h2>
-                    <p class="text-xs opacity-80 leading-snug font-medium">Isi laporan harian kunjungan pasien IGD.</p>
-                </div>
-                <div class="arrow-btn opacity-0 group-hover:opacity-100">
-                    <i class="fas fa-arrow-right"></i>
-                </div>
-            </a>
-
-            <!-- Kalkulator Medis (Secondary - Hijau/Teal) -->
-            <a href="https://igdrsdh.github.io/Multitool-IGD/" class="m3-card container-secondary p-8 group">
-                <div class="m3-icon-bg mb-10">
-                    <i class="fas fa-square-root-alt text-2xl"></i>
-                </div>
-                <div class="flex-grow">
-                    <h2 class="text-xl font-bold mb-3">Kalkulator Medis</h2>
-                    <p class="text-xs opacity-80 leading-snug font-medium">Hitung dosis obat, luka bakar, dan GCS.</p>
-                </div>
-                <div class="arrow-btn opacity-0 group-hover:opacity-100">
-                    <i class="fas fa-arrow-right"></i>
+                <h2 class="m3-card-title">Laporan Harian</h2>
+                <p class="m3-card-desc">Rekapitulasi kunjungan pasien shift harian.</p>
+                <div class="card-footer">
+                    <span>Buka Aplikasi</span>
+                    <i class="fas fa-chevron-right text-[10px]"></i>
                 </div>
             </a>
 
-            <!-- Pasien HIV (Tertiary - Ungu) -->
-            <a href="https://input-hiv.netlify.app/" class="m3-card container-tertiary p-8 group">
-                <div class="m3-icon-bg mb-10">
-                    <i class="fas fa-notes-medical text-2xl"></i>
+            <!-- Kalkulator Medis -->
+            <a href="https://igdrsdh.github.io/Multitool-IGD/" class="m3-card card-secondary">
+                <div class="m3-icon-bg">
+                    <i class="fas fa-calculator"></i>
                 </div>
-                <div class="flex-grow">
-                    <h2 class="text-xl font-bold mb-3">Pasien HIV</h2>
-                    <p class="text-xs opacity-80 leading-snug font-medium">Pencatatan data pasien diagnosa HIV.</p>
-                </div>
-                <div class="arrow-btn opacity-0 group-hover:opacity-100">
-                    <i class="fas fa-arrow-right"></i>
-                </div>
-            </a>
-
-            <!-- Obat Diare (Error - Merah) -->
-            <a href="https://input-obat-diare.netlify.app/" class="m3-card container-error p-8 group">
-                <div class="m3-icon-bg mb-10">
-                    <i class="fas fa-capsules text-2xl"></i>
-                </div>
-                <div class="flex-grow">
-                    <h2 class="text-xl font-bold mb-3">Obat Diare</h2>
-                    <p class="text-xs opacity-80 leading-snug font-medium">Pelaporan penggunaan obat antidiare.</p>
-                </div>
-                <div class="arrow-btn opacity-0 group-hover:opacity-100">
-                    <i class="fas fa-arrow-right"></i>
+                <h2 class="m3-card-title">Kalkulasi Klinis</h2>
+                <p class="m3-card-desc">Dosis obat, GCS, dan skor medis darurat.</p>
+                <div class="card-footer">
+                    <span>Mulai Hitung</span>
+                    <i class="fas fa-chevron-right text-[10px]"></i>
                 </div>
             </a>
 
-            <!-- Drive IGD (Variant - Abu/Biru Gelap) -->
-            <a href="https://drive.google.com/" target="_blank" class="m3-card container-variant p-8 group">
-                <div class="m3-icon-bg mb-10">
-                    <i class="fab fa-google-drive text-2xl"></i>
+            <!-- Pasien HIV -->
+            <a href="https://input-hiv.netlify.app/" class="m3-card card-tertiary">
+                <div class="m3-icon-bg">
+                    <i class="fas fa-shield-virus"></i>
                 </div>
-                <div class="flex-grow">
-                    <h2 class="text-xl font-bold mb-3">Drive IGD</h2>
-                    <p class="text-xs opacity-80 leading-snug font-medium">Penyimpanan dokumen dan arsip digital IGD.</p>
+                <h2 class="m3-card-title">Database HIV</h2>
+                <p class="m3-card-desc">Pencatatan khusus pasien diagnosa HIV.</p>
+                <div class="card-footer">
+                    <span>Akses Data</span>
+                    <i class="fas fa-chevron-right text-[10px]"></i>
                 </div>
-                <div class="arrow-btn opacity-0 group-hover:opacity-100">
-                    <i class="fas fa-external-link-alt"></i>
+            </a>
+
+            <!-- Obat Diare -->
+            <a href="https://input-obat-diare.netlify.app/" class="m3-card card-error">
+                <div class="m3-icon-bg">
+                    <i class="fas fa-pills"></i>
+                </div>
+                <h2 class="m3-card-title">Obat Diare</h2>
+                <p class="m3-card-desc">Monitoring stok dan penggunaan antidiare.</p>
+                <div class="card-footer">
+                    <span>Lapor Stok</span>
+                    <i class="fas fa-chevron-right text-[10px]"></i>
+                </div>
+            </a>
+
+            <!-- Drive IGD -->
+            <a href="https://drive.google.com/" target="_blank" class="m3-card card-variant">
+                <div class="m3-icon-bg">
+                    <i class="fab fa-google-drive"></i>
+                </div>
+                <h2 class="m3-card-title">Arsip Digital</h2>
+                <p class="m3-card-desc">Penyimpanan cloud dokumen internal.</p>
+                <div class="card-footer">
+                    <span>Buka Drive</span>
+                    <i class="fas fa-external-link-alt text-[10px]"></i>
                 </div>
             </a>
         </div>
@@ -363,66 +329,63 @@
         <section class="mb-20 text-center">
             <div class="flex items-center gap-4 mb-10">
                 <div class="h-[1px] flex-grow bg-slate-200 dark:bg-slate-800"></div>
-                <h3 class="text-xs font-black uppercase tracking-[0.4em] text-blue-600 dark:text-blue-400 opacity-90">
-                    Struktur Organisasi & Personil IGD
+                <h3 class="text-[10px] font-black uppercase tracking-[0.5em] text-slate-400">
+                    Struktur Personil
                 </h3>
                 <div class="h-[1px] flex-grow bg-slate-200 dark:bg-slate-800"></div>
             </div>
             
             <div class="mb-14">
                 <div class="inline-block">
-                    <p class="text-[10px] font-bold uppercase tracking-widest mb-2 opacity-60">Kepala Ruang</p>
                     <div class="head-crew-chip">
-                        <i class="fas fa-user-tie"></i>
+                        <i class="fas fa-user-circle"></i>
                         <span>Ns. Ari Juniardi S.Kep</span>
                     </div>
+                    <p class="text-[9px] font-bold uppercase tracking-widest mt-2 opacity-40">Kepala Ruangan</p>
                 </div>
             </div>
 
             <div class="mb-14">
-                <p class="text-[10px] font-bold uppercase tracking-widest mb-6 opacity-60">Tim Medis / Dokter</p>
-                <div class="flex flex-wrap justify-center gap-4 max-w-5xl mx-auto">
-                    <div class="doctor-chip"><i class="fas fa-user-md"></i> dr. Sukresno Tjahjo W., M.Kes</div>
-                    <div class="doctor-chip"><i class="fas fa-user-md"></i> dr. Syntia Arisandi</div>
-                    <div class="doctor-chip"><i class="fas fa-user-md"></i> dr. Felicia Putri Hartono</div>
-                    <div class="doctor-chip"><i class="fas fa-user-md"></i> dr. Imam Fadli</div>
-                    <div class="doctor-chip"><i class="fas fa-user-md"></i> dr. Deo Sanjaya</div>
-                    <div class="doctor-chip"><i class="fas fa-user-md"></i> dr. Farah Shania</div>
-                    <div class="doctor-chip"><i class="fas fa-user-md"></i> dr. Evva Mardiyana</div>
-                    <div class="doctor-chip"><i class="fas fa-user-md"></i> dr. Ratna Dewi</div>
+                <p class="text-[10px] font-bold uppercase tracking-widest mb-6 opacity-40">Dokter Jaga</p>
+                <div class="flex flex-wrap justify-center gap-3 max-w-5xl mx-auto">
+                    <div class="doctor-chip">dr. Sukresno T. W., M.Kes</div>
+                    <div class="doctor-chip">dr. Syntia Arisandi</div>
+                    <div class="doctor-chip">dr. Felicia Putri H.</div>
+                    <div class="doctor-chip">dr. Imam Fadli</div>
+                    <div class="doctor-chip">dr. Deo Sanjaya</div>
+                    <div class="doctor-chip">dr. Farah Shania</div>
+                    <div class="doctor-chip">dr. Evva Mardiyana</div>
+                    <div class="doctor-chip">dr. Ratna Dewi</div>
                 </div>
             </div>
 
             <div>
-                <p class="text-[10px] font-bold uppercase tracking-widest mb-6 opacity-60">Tim Keperawatan</p>
-                <div class="flex flex-wrap justify-center gap-4 max-w-6xl mx-auto">
-                    <div class="crew-chip"><i class="fas fa-user-nurse"></i> Wulia Susanti A.Md.Kep</div>
-                    <div class="crew-chip"><i class="fas fa-user-nurse"></i> Rendika Aditiya A.Md.Kep</div>
-                    <div class="crew-chip"><i class="fas fa-user-nurse"></i> Ns. Wahyu Angga P S.Kep</div>
-                    <div class="crew-chip"><i class="fas fa-user-nurse"></i> Ns. Reiza Oktavia S.Kep</div>
-                    <div class="crew-chip"><i class="fas fa-user-nurse"></i> Ns. Nanang Hanafi S.Kep</div>
-                    <div class="crew-chip"><i class="fas fa-user-nurse"></i> Ns. Devi Kharismanda S.Kep</div>
-                    <div class="crew-chip"><i class="fas fa-user-nurse"></i> Ns. Ivo Pramaysella S.Kep</div>
-                    <div class="crew-chip"><i class="fas fa-user-nurse"></i> Ade Irma Nila A.Md.Kep</div>
-                    <div class="crew-chip"><i class="fas fa-user-nurse"></i> Adam Archi R A.Md.Kep</div>
-                    <div class="crew-chip"><i class="fas fa-user-nurse"></i> Titis Nur A A.Md.Kep</div>
-                    <div class="crew-chip"><i class="fas fa-user-nurse"></i> Ns. Meylisa Anastasya S.Kep</div>
-                    <div class="crew-chip"><i class="fas fa-user-nurse"></i> Renin Lindasari A.Md.Kep</div>
-                    <div class="crew-chip"><i class="fas fa-user-nurse"></i> Mardiyanti Nur A.Md.Kep</div>
-                    <div class="crew-chip"><i class="fas fa-user-nurse"></i> Ns. Lisa Munika S.Kep</div>
+                <p class="text-[10px] font-bold uppercase tracking-widest mb-6 opacity-40">Perawat Pelaksana</p>
+                <div class="flex flex-wrap justify-center gap-3 max-w-6xl mx-auto">
+                    <div class="crew-chip">Wulia Susanti</div>
+                    <div class="crew-chip">Rendika Aditiya</div>
+                    <div class="crew-chip">Ns. Wahyu Angga P</div>
+                    <div class="crew-chip">Ns. Reiza Oktavia</div>
+                    <div class="crew-chip">Ns. Nanang Hanafi</div>
+                    <div class="crew-chip">Ns. Devi Kharismanda</div>
+                    <div class="crew-chip">Ns. Ivo Pramaysella</div>
+                    <div class="crew-chip">Ade Irma Nila</div>
+                    <div class="crew-chip">Adam Archi R</div>
+                    <div class="crew-chip">Titis Nur A</div>
+                    <div class="crew-chip">Ns. Meylisa Anastasya</div>
+                    <div class="crew-chip">Renin Lindasari</div>
+                    <div class="crew-chip">Mardiyanti Nur</div>
+                    <div class="crew-chip">Ns. Lisa Munika</div>
                 </div>
             </div>
         </section>
 
-        <footer class="pt-10 border-t border-slate-200 dark:border-slate-800 flex flex-col md:flex-row items-center justify-between gap-6 opacity-60">
+        <footer class="pt-10 border-t border-slate-100 dark:border-slate-800 flex flex-col md:flex-row items-center justify-between gap-6 opacity-40">
             <div class="flex items-center gap-3">
-                <div class="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center text-white text-xs">
-                    <i class="fas fa-plus"></i>
-                </div>
-                <span class="font-bold text-sm tracking-wide">Instalasi Gawat Darurat v1.4.0</span>
+                <span class="font-bold text-[11px] tracking-widest uppercase">IGD System v1.4.0</span>
             </div>
             <div class="text-[10px] font-bold uppercase tracking-widest text-center md:text-right">
-                Bekerja dengan Hati, Melayani dengan Empati • RS Dian Husada
+                RS Dian Husada • Medical Portal
             </div>
         </footer>
     </main>
@@ -456,12 +419,9 @@
                 const response = await fetch(`https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/commits/main`, {
                     headers: { 'Accept': 'application/vnd.github.v3+json' }
                 });
-                
                 if (!response.ok) return;
-
                 const data = await response.json();
                 const currentSha = data.sha;
-
                 if (lastSha && lastSha !== currentSha) {
                     const banner = document.getElementById('update-banner');
                     banner.classList.add('show');
@@ -470,9 +430,7 @@
                 } else {
                     localStorage.setItem('last_github_sha', currentSha);
                 }
-            } catch (error) {
-                console.warn("Update check failed (Silent)");
-            }
+            } catch (error) { console.warn("Update check failed"); }
         }
 
         checkForUpdates();
